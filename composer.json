@@ -1,0 +1,21 @@
+{
+    "name": "archistico/bookcover",
+    "authors": [
+        {
+            "name": "archistico",
+            "email": "info@archistico.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"App\\": "app/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"App\\Tests\\": "tests/"}
+    },
+    "require": {
+        "tecnickcom/tcpdf": "^6.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
+}
