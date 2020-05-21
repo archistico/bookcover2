@@ -1,7 +1,7 @@
 <?php
 
   $variables = [
-      'APP_VERSIONE' => '2.0.0',
+      'APP_VERSIONE' => '2.0.2',
   ];
 
   foreach ($variables as $key => $value) {
