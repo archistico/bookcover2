@@ -1,10 +1,11 @@
 <?php
 
   $variables = [
-      'APP_VERSIONE' => '2.0.2',
+      'APP_VERSIONE' => '2.0.3',
   ];
 
   foreach ($variables as $key => $value) {
       putenv("$key=$value");
   }
 ?>
+
