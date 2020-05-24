@@ -7,19 +7,19 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="larghezza">Larghezza [mm]</label>
-                        <input type="number" min="0" class="form-control" id="larghezza" placeholder="Scrivi la larghezza della pagina in mm" value="150" name="larghezza">
+                        <input type="number" min="0" class="form-control" id="larghezza" placeholder="Scrivi la larghezza della pagina in mm" value="150" name="larghezza" required>
                     </div> 
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="altezza">Altezza [mm]</label>
-                        <input type="number" min="0" class="form-control" id="altezza" placeholder="Scrivi l'altezza della pagina in mm" value="210" name="altezza">
+                        <input type="number" min="0" class="form-control" id="altezza" placeholder="Scrivi l'altezza della pagina in mm" value="210" name="altezza" required>
                     </div> 
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="alette">Alette [mm]</label>
-                        <input type="number" min="0" class="form-control" id="alette" placeholder="Se ci sono le alette indicare la larghezza" value="0" name="alette">
+                        <input type="number" min="0" class="form-control" id="alette" placeholder="Se ci sono le alette indicare la larghezza" value="0" name="alette" required>
                     </div> 
                 </div>
             </div>
@@ -29,19 +29,19 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="abbondanza">Abbondanza [mm]</label>
-                        <input type="number" min="0" class="form-control" id="abbondanza" placeholder="" value="5" name="abbondanza">
+                        <input type="number" min="0" class="form-control" id="abbondanza" placeholder="Millimetri oltre la linea di taglio di sicurezza" value="5" name="abbondanza" required>
                     </div> 
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="segnitaglio">Segni di taglio [mm]</label>
-                        <input type="number" min="0" class="form-control" id="segnitaglio" placeholder="" value="3" name="segnitaglio">
+                        <input type="number" min="0" class="form-control" id="segnitaglio" placeholder="Lunghezza dei segni di taglio" value="3" name="segnitaglio" required>
                     </div> 
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="bordo">Bordo sicurezza interno [mm]</label>
-                        <input type="number" min="0" class="form-control" id="bordo" placeholder="" value="3" name="bordo">
+                        <input type="number" min="0" class="form-control" id="bordo" placeholder="Bordo interno per i testi" value="3" name="bordo" required>
                     </div> 
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="numeropagine">Numero di pagine [-]</label>
-                        <input type="number" min="0" class="form-control" id="numeropagine" placeholder="" value="80" name="numeropagine">
+                        <input type="number" min="0" class="form-control" id="numeropagine" placeholder="Indica il numero di pagine" value="80" name="numeropagine" required>
                     </div> 
                 </div>
                 <div class="col">
@@ -68,8 +68,8 @@
                     <div class="form-group">
                         <label for="rilegatura">Rilegatura [-]</label>
                         <select class="form-control" id="rilegatura" name="rilegatura">
-                            <option selected>Fresata</option>
-                            <option>Cucita</option>
+                            <option value="0" selected>Fresata</option>
+                            <option value="1">Cucita</option>
                         </select>
                     </div> 
                 </div>
@@ -79,42 +79,42 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="">Casa editrice</label>
-                        <input type="text" class="form-control" placeholder="" name="" id="">
+                        <label for="casaeditrice">Casa editrice</label>
+                        <input type="text" class="form-control" placeholder="Nome della casa editrice" name="casaeditrice" id="casaeditrice">
                     </div> 
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="">Collana</label>
-                        <input type="text" class="form-control" placeholder="" name="" id="">
-                    </div> 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="">Titolo</label>
-                        <input type="text" class="form-control" placeholder="" name="" id="">
-                    </div> 
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="">Autore</label>
-                        <input type="text" class="form-control" placeholder="" name="" id="">
+                        <label for="collana">Collana</label>
+                        <input type="text" class="form-control" placeholder="Nome della collana" name="collana" id="collana">
                     </div> 
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="">ISBN</label>
-                        <input type="text" class="form-control" placeholder="" name="" id="">
+                        <label for="titolo">Titolo</label>
+                        <input type="text" class="form-control" placeholder="Titolo" name="titolo" id="titolo">
                     </div> 
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="">Prezzo</label>
-                        <input type="number" min="0" max="1000" step="0.01" class="form-control" placeholder="" name="" id="" value="10">
+                        <label for="autore">Autore</label>
+                        <input type="text" class="form-control" placeholder="Autore" name="autore" id="autore">
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="isbn">ISBN</label>
+                        <input type="text" class="form-control" placeholder="Segna l'ISBN" name="isbn" id="isbn">
+                    </div> 
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="prezzo">Prezzo</label>
+                        <input type="number" min="0" max="1000" step="0.01" class="form-control" placeholder="Prezzo" name="prezzo" id="prezzo" value="10">
                     </div> 
                 </div>
             </div>

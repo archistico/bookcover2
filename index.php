@@ -33,6 +33,7 @@ $f3->set('APP_VERSIONE', env("APP_VERSIONE"));
 // ----------------------
 
 $f3->route('GET @home: /', '\App\Cover->Homepage');
+$f3->route('POST @nuova: /', '\App\Cover->Nuova');
 
 // Se errori
 $f3->set('ONERROR',function($f3){
