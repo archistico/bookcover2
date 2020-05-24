@@ -17,9 +17,6 @@ echo "|-------------------------------|\n";
 echo "|--------- NUOVO COMMIT --------|\n";
 echo "|-------------------------------|\n";
 echo "Nome: $nomeCommit\n";
-exec("git add .");
-exec('git commit -m"' . $nomeCommit . '"');
-exec("git push origin master");
 
 if (!empty($tag)) {
     echo "Tag: $tag\n";
@@ -74,3 +71,7 @@ if (!empty($tag)) {
         }
     }
 }
+
+exec("git add .");
+exec('git commit -m"' . $nomeCommit . '"');
+exec("git push origin master");
