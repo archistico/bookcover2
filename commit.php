@@ -18,9 +18,7 @@ echo "|--------- NUOVO COMMIT --------|\n";
 echo "|-------------------------------|\n";
 echo "Nome: $nomeCommit\n";
 
-if (!empty($tag)) {
-    echo "New tag: $tag\n";
-} else {
+if (empty($tag)) {
     echo "Increment tag on file env\n";
     $envfile = "env.php";
     if (file_exists($envfile) === true) {
@@ -73,6 +71,8 @@ exec("git add .");
 
 $comando = 'git tag -a "v' . $tag . '" -m "version v' . $tag . '"';
 exec($comando);
+
+echo "New tag: $tag\n";
 
 exec('git commit -m"' . $nomeCommit . '"');
 exec("git push origin master");
