@@ -19,10 +19,9 @@ echo "|-------------------------------|\n";
 echo "Nome: $nomeCommit\n";
 
 if (!empty($tag)) {
-    echo "Tag: $tag\n";
-    $comando = 'git tag -a "v' . $tag . '" -m "version v' . $tag . '"';
-    exec($comando);
+    echo "New tag: $tag\n";
 } else {
+    echo "Increment tag on file env\n";
     $envfile = "env.php";
     if (file_exists($envfile) === true) {
         if (is_writeable($envfile)) {
@@ -61,9 +60,7 @@ if (!empty($tag)) {
 
                 fwrite($fw, $newfiletext);
                 fclose($fw);
-
-                $comando = 'git tag -a "v' . "$major.$minor.$patch" . '" -m "version v' . "$major.$minor.$patch" . '"';
-                exec($comando);
+                $tag = "$major.$minor.$patch";
 
             } catch (Exception $e) {
                 $Result["message"] = 'Error : ' . $e;
@@ -73,5 +70,9 @@ if (!empty($tag)) {
 }
 
 exec("git add .");
+
+$comando = 'git tag -a "v' . $tag . '" -m "version v' . $tag . '"';
+exec($comando);
+
 exec('git commit -m"' . $nomeCommit . '"');
 exec("git push origin master");
