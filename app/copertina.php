@@ -140,7 +140,53 @@ class Copertina
 
                 } else {
                         // Con Alette
+
+                        // Punti
+                        $p1 = new Punto($this->segni_taglio + $this->abbondanza, $this->segni_taglio + $this->abbondanza);
+                        $p2 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza, $this->segni_taglio + $this->abbondanza);
+                        $p3 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + $this->pagina_larghezza, $this->segni_taglio + $this->abbondanza);
+                        $p4 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza);
+                        $p5 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza);
+                        $p6 = new Punto($this->segni_taglio + $this->abbondanza + 2 * $this->alette_larghezza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza);
+
+                        $p7 = new Punto($this->segni_taglio + $this->abbondanza, $this->segni_taglio + $this->abbondanza + $this->pagina_altezza);
+                        $p8 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza, $this->segni_taglio + $this->abbondanza + $this->pagina_altezza);
+                        $p9 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + $this->pagina_larghezza, $this->segni_taglio + $this->abbondanza + $this->pagina_altezza);
+                        $p10 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza + $this->pagina_altezza);
+                        $p11 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza + $this->pagina_altezza);
+                        $p12 = new Punto($this->segni_taglio + $this->abbondanza + 2 * $this->alette_larghezza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza + $this->pagina_altezza);
                         
+                        $p13 = new Punto($this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza);
+                        $p14 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza);
+                        $p15 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + $this->pagina_larghezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza);
+                        $p16 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + $this->pagina_larghezza + $this->dorso_larghezza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza);
+                        $p17 = new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza + 2 * $this->pagina_larghezza + $this->dorso_larghezza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza);
+
+                        // Indicatori
+                        $this->indicatore_top_ext_sx_aletta = new Indicatore($p1, $this->segni_taglio, $this->abbondanza, [true, false, false, true]);
+                        $this->indicatore_top_ext_sx = new Indicatore($p2, $this->segni_taglio, $this->abbondanza, [true, false, false, false]);
+                        $this->indicatore_top_dor_sx = new Indicatore($p3, $this->segni_taglio, $this->abbondanza, [true, false, false, false]);
+                        $this->indicatore_top_dor_dx = new Indicatore($p4, $this->segni_taglio, $this->abbondanza, [true, false, false, false]);
+                        $this->indicatore_top_ext_dx = new Indicatore($p5, $this->segni_taglio, $this->abbondanza, [true, false, false, false]);
+                        $this->indicatore_top_ext_dx_aletta = new Indicatore($p6, $this->segni_taglio, $this->abbondanza, [true, true, false, false]);
+
+                        $this->indicatore_bottom_ext_sx_aletta = new Indicatore($p7, $this->segni_taglio, $this->abbondanza, [false, false, true, true]);
+                        $this->indicatore_bottom_ext_sx = new Indicatore($p8, $this->segni_taglio, $this->abbondanza, [false, false, true, false]);
+                        $this->indicatore_bottom_dor_sx = new Indicatore($p9, $this->segni_taglio, $this->abbondanza, [false, false, true, false]);
+                        $this->indicatore_bottom_dor_dx = new Indicatore($p10, $this->segni_taglio, $this->abbondanza, [false, false, true, false]);
+                        $this->indicatore_bottom_ext_dx = new Indicatore($p11, $this->segni_taglio, $this->abbondanza, [false, false, true, false]);
+                        $this->indicatore_bottom_ext_dx_aletta = new Indicatore($p12, $this->segni_taglio, $this->abbondanza, [false, true, true, false]);
+
+                        // Riquadri
+                        $this->riquadro_cover = new Riquadro($p1, 2 * $this->alette_larghezza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, $this->pagina_altezza);
+                        $this->riquadro_taglio = new Riquadro(new Punto($this->segni_taglio, $this->segni_taglio), 2 * $this->alette_larghezza + 2 * $this->pagina_larghezza + $this->dorso_larghezza + 2 * $this->abbondanza, $this->pagina_altezza + 2 * $this->abbondanza);
+
+                        // Bordi sicurezza
+                        $this->riquadro_sicurezza_aletta_sx = new Riquadro($p13, $this->alette_larghezza - 2 * $this->bordi_sicurezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
+                        $this->riquadro_sicurezza_retro = new Riquadro($p14, $this->pagina_larghezza - 2 * $this->bordi_sicurezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
+                        $this->riquadro_sicurezza_dorso = new Riquadro($p15, $this->dorso_larghezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
+                        $this->riquadro_sicurezza_fronte = new Riquadro($p16, $this->pagina_larghezza - 2 * $this->bordi_sicurezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
+                        $this->riquadro_sicurezza_aletta_dx = new Riquadro($p17, $this->alette_larghezza - 2 * $this->bordi_sicurezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
                 }
         }
 
@@ -156,7 +202,99 @@ class Copertina
 
         public function CopertinaConAlette()
         {
+                $pageLayout = array($this->foglio_larghezza, $this->foglio_altezza);
+                $pdf = new \TCPDF('L', PDF_UNIT, $pageLayout, true, 'UTF-8', false);
 
+                // set document information
+                $pdf->SetCreator('BookCover - Archistico.com');
+                $pdf->SetAuthor('Emilie Rollandin - Archistico.com');
+                $pdf->SetTitle('Cover');
+                $pdf->SetSubject('PDF bookcover');
+                $pdf->SetKeywords('PDF, book, cover');
+
+                $pdf->setPageUnit('mm');
+
+                // remove default header/footer
+                $pdf->setPrintHeader(false);
+                $pdf->setPrintFooter(false);
+
+                // CMYK
+                $pdf->SetDrawColor(0, 0, 0, 100);
+                $pdf->SetFillColor(0, 0, 0, 100);
+                $pdf->SetTextColor(0, 0, 0, 100);
+                
+                $border_style = array('all' => array('width' => 1, 'cap' => 'square', 'join' => 'miter', 'dash' => 0, 'phase' => 0));
+
+                // add a page
+                $pdf->AddPage();
+
+                // INIZIO LAYER SEGNI DI TAGLIO
+                $pdf->startLayer('Segni_di_taglio', true, true);
+
+
+                $this->indicatore_top_ext_sx_aletta->Draw($pdf);
+                $this->indicatore_top_ext_sx->Draw($pdf);
+                $this->indicatore_top_dor_sx->Draw($pdf);
+                $this->indicatore_top_dor_dx->Draw($pdf);
+                $this->indicatore_top_ext_dx->Draw($pdf);
+                $this->indicatore_top_ext_dx_aletta->Draw($pdf);
+
+                $this->indicatore_bottom_ext_sx_aletta->Draw($pdf);
+                $this->indicatore_bottom_ext_sx->Draw($pdf);
+                $this->indicatore_bottom_dor_sx->Draw($pdf);
+                $this->indicatore_bottom_dor_dx->Draw($pdf);
+                $this->indicatore_bottom_ext_dx->Draw($pdf);
+                $this->indicatore_bottom_ext_dx_aletta->Draw($pdf);
+
+                // FINE LAYER SEGNI DI TAGLIO
+                $pdf->endLayer();
+
+                // INIZIO LAYER BORDO TAGLIO
+                $pdf->startLayer('Bordo_di_taglio', false, true);
+
+                $this->riquadro_taglio->Draw($pdf);
+                
+                // FINE LAYER BORDO TAGLIO
+                $pdf->endLayer();
+
+                // INIZIO LAYER BORDO COPERTINA CON ABBONDANZA
+                $pdf->startLayer('Bordo_con_abbondanza', false, true);
+
+                $stile_bordo_cover = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => '0', 'color' => array(255, 0, 0));
+                $this->riquadro_cover->Draw($pdf, $stile_bordo_cover);
+                
+                // FINE LAYER BORDO COPERTINA CON ABBONDANZA
+                $pdf->endLayer();
+
+                // INIZIO LAYER BORDO SICUREZZA
+                $pdf->startLayer('Bordo_sicurezza', false, true);
+                $stile_bordo_sicurezza = array('width' => 0.1, 'cap' => 'butt', 'join' => 'miter', 'dash' => '3,6', 'color' => array(255, 0, 0));
+
+                $this->riquadro_sicurezza_aletta_sx->Draw($pdf, $stile_bordo_sicurezza);
+                $this->riquadro_sicurezza_fronte->Draw($pdf, $stile_bordo_sicurezza);
+                $this->riquadro_sicurezza_retro->Draw($pdf, $stile_bordo_sicurezza);
+                $this->riquadro_sicurezza_dorso->Draw($pdf, $stile_bordo_sicurezza);
+                $this->riquadro_sicurezza_aletta_dx->Draw($pdf, $stile_bordo_sicurezza);
+
+                // FINE LAYER BORDO SICUREZZA
+                $pdf->endLayer();
+
+
+
+
+
+
+
+
+
+
+                //Close and output PDF document
+                $saveFile = false;
+                if ($saveFile) {
+                        $pdf->Output(__DIR__ . '/cover.pdf', 'F');
+                } else {
+                        $pdf->Output('cover.pdf', 'I');
+                }
         }
 
         public function CopertinaSenzaAlette()

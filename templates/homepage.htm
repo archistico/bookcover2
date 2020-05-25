@@ -51,7 +51,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="numeropagine">Numero di pagine [-]</label>
-                        <input type="number" min="0" class="form-control" id="numeropagine" placeholder="Indica il numero di pagine" value="80" name="numeropagine" required>
+                        <input type="number" min="0" class="form-control" id="numeropagine" placeholder="Indica il numero di pagine" value="160" name="numeropagine" required>
                     </div> 
                 </div>
                 <div class="col">
