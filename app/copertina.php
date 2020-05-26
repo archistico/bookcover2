@@ -213,11 +213,11 @@ class Copertina
                 $pdf = new \TCPDF('L', PDF_UNIT, $pageLayout, true, 'UTF-8', false);
 
                 // set document information
-                $pdf->SetCreator('BookCover - Archistico.com');
-                $pdf->SetAuthor('Emilie Rollandin - Archistico.com');
-                $pdf->SetTitle('Cover');
-                $pdf->SetSubject('PDF bookcover');
-                $pdf->SetKeywords('PDF, book, cover');
+                // $pdf->SetCreator('BookCover - Archistico.com');
+                // $pdf->SetAuthor('Emilie Rollandin - Archistico.com');
+                // $pdf->SetTitle('Cover');
+                // $pdf->SetSubject('PDF bookcover');
+                // $pdf->SetKeywords('PDF, book, cover');
 
                 $pdf->setPageUnit('mm');
 
@@ -313,11 +313,11 @@ class Copertina
                 $pdf = new \TCPDF('L', PDF_UNIT, $pageLayout, true, 'UTF-8', false);
 
                 // set document information
-                $pdf->SetCreator('BookCover - Archistico.com');
-                $pdf->SetAuthor('Emilie Rollandin - Archistico.com');
-                $pdf->SetTitle('Cover');
-                $pdf->SetSubject('PDF bookcover');
-                $pdf->SetKeywords('PDF, book, cover');
+                // $pdf->SetCreator('BookCover - Archistico.com');
+                // $pdf->SetAuthor('Emilie Rollandin - Archistico.com');
+                // $pdf->SetTitle('Cover');
+                // $pdf->SetSubject('PDF bookcover');
+                // $pdf->SetKeywords('PDF, book, cover');
 
                 $pdf->setPageUnit('mm');
 
@@ -443,6 +443,9 @@ class Copertina
 
                 $pdf->setXY($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza + $this->pagina_altezza / 3);
                 $pdf->Cell($this->pagina_larghezza-2*$this->bordi_sicurezza, $altezza_linea, $this->titolo, 0, 1, 'C');
+                $pdf->SetFont('Helvetica', '', 18);
+                $lunghezza_testo = $pdf->GetStringWidth($this->titolo);
+                $pdf->Cell($this->pagina_larghezza-2*$this->bordi_sicurezza, $altezza_linea, $lunghezza_testo, 0, 1, 'C');
                 
                 $pdf->setXY($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza + $this->pagina_altezza / 3);
                 $pdf->Rotate(-90);
