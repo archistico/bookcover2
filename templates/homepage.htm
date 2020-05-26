@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <form method="POST">
+        <form method="GET" action="/pdf">
 
             <h5>Pagina</h5>
             <div class="row">
@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label for="altezza">Altezza [mm]</label>
                         <input type="number" min="0" class="form-control" id="altezza" placeholder="Scrivi l'altezza della pagina in mm" value="210" name="altezza" required>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
@@ -94,13 +94,13 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="titolo">Titolo</label>
-                        <input type="text" class="form-control" placeholder="Titolo" name="titolo" id="titolo">
+                        <input type="text" class="form-control" placeholder="Titolo" name="titolo" id="titolo" value="Titolo">
                     </div> 
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="autore">Autore</label>
-                        <input type="text" class="form-control" placeholder="Autore" name="autore" id="autore">
+                        <input type="text" class="form-control" placeholder="Autore" name="autore" id="autore" value="Autore">
                     </div> 
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="isbn">ISBN</label>
-                        <input type="text" class="form-control" placeholder="Segna l'ISBN" name="isbn" id="isbn">
+                        <input type="text" class="form-control" placeholder="Segna l'ISBN" name="isbn" id="isbn" value="9788897192602">
                     </div> 
                 </div>
                 <div class="col">

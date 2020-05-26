@@ -238,7 +238,6 @@ class Copertina
                 // INIZIO LAYER SEGNI DI TAGLIO
                 $pdf->startLayer('Segni_di_taglio', true, true);
 
-
                 $this->indicatore_top_ext_sx_aletta->Draw($pdf);
                 $this->indicatore_top_ext_sx->Draw($pdf);
                 $this->indicatore_top_dor_sx->Draw($pdf);
@@ -256,21 +255,21 @@ class Copertina
                 // FINE LAYER SEGNI DI TAGLIO
                 $pdf->endLayer();
 
-                // INIZIO LAYER BORDO TAGLIO
-                $pdf->startLayer('Bordo_di_taglio', false, true);
-
-                $this->riquadro_taglio->Draw($pdf);
-                
-                // FINE LAYER BORDO TAGLIO
-                $pdf->endLayer();
-
                 // INIZIO LAYER BORDO COPERTINA CON ABBONDANZA
                 $pdf->startLayer('Bordo_con_abbondanza', false, true);
 
-                $stile_bordo_cover = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => '0', 'color' => array(255, 0, 0));
-                $this->riquadro_cover->Draw($pdf, $stile_bordo_cover);
+                $this->riquadro_taglio->Draw($pdf);
                 
                 // FINE LAYER BORDO COPERTINA CON ABBONDANZA
+                $pdf->endLayer();
+
+                // INIZIO LAYER BORDO TAGLIO
+                $pdf->startLayer('Bordo_di_taglio', false, true);
+
+                $stile_bordo_cover = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => '0', 'color' => array(255, 0, 0));
+                $this->riquadro_cover->Draw($pdf, $stile_bordo_cover);
+                                
+                // FINE LAYER BORDO TAGLIO
                 $pdf->endLayer();
 
                 // INIZIO LAYER BORDO SICUREZZA
@@ -337,7 +336,7 @@ class Copertina
                 $pdf->AddPage();
 
                 // INIZIO LAYER SEGNI DI TAGLIO
-                $pdf->startLayer('Segni_di_taglio', true, true);
+                $pdf->startLayer('Segni_di_taglio', true, true, true);
 
                 $this->indicatore_top_ext_sx->Draw($pdf);
                 $this->indicatore_top_dor_sx->Draw($pdf);
@@ -349,28 +348,28 @@ class Copertina
                 $this->indicatore_bot_dor_dx->Draw($pdf);
                 $this->indicatore_bot_ext_dx->Draw($pdf);
 
-                // FINE LAYER SEGNI DI TAGLIO
-                $pdf->endLayer();
-
-                // INIZIO LAYER BORDO TAGLIO
-                $pdf->startLayer('Bordo_di_taglio', false, true);
-
-                $this->riquadro_taglio->Draw($pdf);
-                
-                // FINE LAYER BORDO TAGLIO
+                // FINE LAYER SEGNI DI ABBONDANZA
                 $pdf->endLayer();
 
                 // INIZIO LAYER BORDO COPERTINA CON ABBONDANZA
                 $pdf->startLayer('Bordo_con_abbondanza', false, true);
 
-                $stile_bordo_cover = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => '0', 'color' => array(255, 0, 0));
-                $this->riquadro_cover->Draw($pdf, $stile_bordo_cover);
+                $this->riquadro_taglio->Draw($pdf);
                 
                 // FINE LAYER BORDO COPERTINA CON ABBONDANZA
                 $pdf->endLayer();
 
+                // INIZIO LAYER BORDO TAGLIO
+                $pdf->startLayer('Bordo_di_taglio', false, true);
+
+                $stile_bordo_cover = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => '0', 'color' => array(255, 0, 0));
+                $this->riquadro_cover->Draw($pdf, $stile_bordo_cover);
+                                
+                // FINE LAYER BORDO TAGLIO
+                $pdf->endLayer();                
+
                 // INIZIO LAYER BORDO SICUREZZA
-                $pdf->startLayer('Bordo_sicurezza', false, true);
+                $pdf->startLayer('Bordo_sicurezza', false, true, false);
                 $stile_bordo_sicurezza = array('width' => 0.1, 'cap' => 'butt', 'join' => 'miter', 'dash' => '3,6', 'color' => array(255, 0, 0));
 
                 $this->riquadro_sicurezza_fronte->Draw($pdf, $stile_bordo_sicurezza);
@@ -381,7 +380,7 @@ class Copertina
                 $pdf->endLayer();
 
                 // INIZIO LAYER ASSI
-                $pdf->startLayer('Assi', false, true);
+                $pdf->startLayer('Assi', false, true, false);
                 $stile_asse = array('width' => 0.1, 'cap' => 'butt', 'join' => 'miter', 'dash' => '6,3,1,3', 'color' => array(0, 255, 0));
 
                 $this->asse_retro->Draw($pdf, $stile_asse);
@@ -391,14 +390,68 @@ class Copertina
                 // FINE LAYER ASSI
                 $pdf->endLayer();
 
+                                // INIZIO LAYER ISBN
+                                $pdf->startLayer('ISBN', true, true, false);
+                
+                                if(!empty($this->ISBN)) {
+                                        $nISBN = new \App\ISBN();
+                                        $nISBN->Codifica($this->ISBN);
+                                        $aISBN = str_split($nISBN->getISBN());
+                
+                                        // Disegna ISBN
+                                        $Lmodulo = 0.33;
+                                        $Hmodulo = 15;
+                                        $bordo = 5;
+                                        
+                                        $posX = $this->segni_taglio + $this->abbondanza + $this->pagina_larghezza - $this->bordi_sicurezza - $Lmodulo*95 - $bordo;
+                                        $posY = $this->pagina_altezza - $this->segni_taglio - $this->abbondanza - $this->bordi_sicurezza - $Hmodulo - $bordo+2;
+                                        
+                                        $pdf->SetFillColor(255,255,255);
+                                        $pdf->Rect($posX-$bordo, $posY-$bordo, $Lmodulo*95+2*$bordo, $Hmodulo+2*$bordo-2, 'F');
+                                        
+                                        $pdf->SetLineWidth(0);
+                                        $pdf->SetFillColor(0,0,0);
+                                        
+                                        for($c=0;$c<count($aISBN);$c++){
+                                                if($aISBN[$c]==1) {
+                                                if($c<=3 || $c>=92 || ($c>=46 && $c<=49)) {
+                                                        $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo, 'F');
+                                                } else {
+                                                        $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo-2, 'F');
+                                                }
+                                                }
+                                        }
+                                        
+                                        $pdf->SetFont('Helvetica', '', 8);
+                                        $deltaX = -3;
+                                        $deltaY = -1.5;
+                                        $pdf->Text($posX+$deltaX, $posY+$Hmodulo+$deltaY, $this->ISBN[0]);
+                                        for($c=1;$c<=6;$c++) { $pdf->Text($posX+1.75+($c-1)*2.40, $posY+$Hmodulo+$deltaY, $this->ISBN[$c]); }
+                                        for($c=1;$c<=6;$c++) { $pdf->Text($posX+17.75+($c-1)*2.40, $posY+$Hmodulo+$deltaY, $this->ISBN[$c+6]); }
+                                        $pdf->SetFont('Helvetica', '', 8.25);
+                                        $pdf->Text($posX-1, $posY-3.5, "ISBN:  ".substr($this->ISBN,0,3)."-".substr($this->ISBN,3,2)."-".substr($this->ISBN,5,7)."-".substr($this->ISBN,12,1));
+                                }
+                
+                // FINE LAYER ISBN
+                $pdf->endLayer(); 
+
                 // INIZIO LAYER TESTI
-                $pdf->startLayer('Testi', false, true);
+                $pdf->startLayer('Testi', true, true, false);
+
+                $pdf->SetFont('Helvetica', '', 18);
+                $altezza_linea = 10;
 
                 $pdf->setXY($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza + $this->pagina_altezza / 3);
-                $pdf->Cell($this->pagina_larghezza-2*$this->bordi_sicurezza, 10, $this->titolo, 0, 1, 'C');
+                $pdf->Cell($this->pagina_larghezza-2*$this->bordi_sicurezza, $altezza_linea, $this->titolo, 0, 1, 'C');
+                
+                $pdf->setXY($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza + $this->pagina_altezza / 3);
+                $pdf->Rotate(-90);
+                $pdf->SetFont('Helvetica', '', $this->dorso_larghezza/0.6);
+                $pdf->Cell($this->pagina_altezza / 3, $this->dorso_larghezza, $this->titolo, 0, 0);
+                $pdf->StopTransform();
 
                 // FINE LAYER TESTI
-                $pdf->endLayer();
+                $pdf->endLayer();         
 
                 //Close and output PDF document
                 $saveFile = false;

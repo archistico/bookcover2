@@ -13,17 +13,17 @@ class Cover
     public function Nuova($f3)
     {
 
-        $larghezza = $f3->get('POST.larghezza');
-        $altezza = $f3->get('POST.altezza');
-        $alette = $f3->get('POST.alette');
+        $larghezza = $f3->get('GET.larghezza');
+        $altezza = $f3->get('GET.altezza');
+        $alette = $f3->get('GET.alette');
 
-        $abbondanza = $f3->get('POST.abbondanza');
-        $segnitaglio = $f3->get('POST.segnitaglio');
-        $bordo = $f3->get('POST.bordo');
+        $abbondanza = $f3->get('GET.abbondanza');
+        $segnitaglio = $f3->get('GET.segnitaglio');
+        $bordo = $f3->get('GET.bordo');
 
-        $numeropagine = $f3->get('POST.numeropagine');
-        $grammatura = $f3->get('POST.grammatura');
-        $rilegatura = $f3->get('POST.rilegatura');
+        $numeropagine = $f3->get('GET.numeropagine');
+        $grammatura = $f3->get('GET.grammatura');
+        $rilegatura = $f3->get('GET.rilegatura');
 
         if($rilegatura=="1") {
             $rilegatura=true;
@@ -31,14 +31,16 @@ class Cover
             $rilegatura=false;
         }
 
-        $casaeditrice = $f3->get('POST.casaeditrice');
-        $collana = $f3->get('POST.collana');
+        $casaeditrice = $f3->get('GET.casaeditrice');
+        $collana = $f3->get('GET.collana');
 
-        $titolo = $f3->get('POST.titolo');
-        $autore = $f3->get('POST.autore');
+        $titolo = $f3->get('GET.titolo');
+        $autore = $f3->get('GET.autore');
 
-        $isbn = $f3->get('POST.isbn');
-        $prezzo = $f3->get('POST.prezzo');
+        $isbn = $f3->get('GET.isbn');
+        $isbn = filter_var($isbn, FILTER_SANITIZE_NUMBER_INT);
+        
+        $prezzo = $f3->get('GET.prezzo');
 
         $cover = new \App\Copertina($larghezza, $altezza, $abbondanza, $segnitaglio, $alette, $bordo, $rilegatura, $numeropagine, $grammatura);
         $cover->setTitolo($titolo)
