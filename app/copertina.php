@@ -391,6 +391,15 @@ class Copertina
                 // FINE LAYER ASSI
                 $pdf->endLayer();
 
+                // INIZIO LAYER TESTI
+                $pdf->startLayer('Testi', false, true);
+
+                $pdf->setXY($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza + $this->pagina_altezza / 3);
+                $pdf->Cell($this->pagina_larghezza-2*$this->bordi_sicurezza, 10, $this->titolo, 0, 1, 'C');
+
+                // FINE LAYER TESTI
+                $pdf->endLayer();
+
                 //Close and output PDF document
                 $saveFile = false;
                 if ($saveFile) {
