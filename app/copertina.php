@@ -187,6 +187,13 @@ class Copertina
                         $this->riquadro_sicurezza_dorso = new Riquadro($p15, $this->dorso_larghezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
                         $this->riquadro_sicurezza_fronte = new Riquadro($p16, $this->pagina_larghezza - 2 * $this->bordi_sicurezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
                         $this->riquadro_sicurezza_aletta_dx = new Riquadro($p17, $this->alette_larghezza - 2 * $this->bordi_sicurezza, $this->pagina_altezza - 2 * $this->bordi_sicurezza);
+
+                        // Assi
+                        $this->asse_aletta_sx = new Linea(new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza / 2, $this->segni_taglio), new Punto($this->segni_taglio + $this->abbondanza + $this->alette_larghezza / 2, $this->segni_taglio + 2 * $this->abbondanza + $this->pagina_altezza));
+                        $this->asse_retro = new Linea(new Punto($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza / 2 + $this->alette_larghezza, $this->segni_taglio), new Punto($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza / 2 + $this->alette_larghezza, $this->segni_taglio + 2 * $this->abbondanza + $this->pagina_altezza));
+                        $this->asse_dorso = new Linea(new Punto($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->alette_larghezza + $this->dorso_larghezza / 2, $this->segni_taglio), new Punto($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza / 2 + $this->alette_larghezza, $this->segni_taglio + 2 * $this->abbondanza + $this->pagina_altezza));
+                        $this->asse_fronte = new Linea(new Punto($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->alette_larghezza + $this->pagina_larghezza / 2  + $this->dorso_larghezza, $this->segni_taglio), new Punto($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->pagina_larghezza / 2  + $this->dorso_larghezza + $this->alette_larghezza, $this->segni_taglio + 2 * $this->abbondanza + $this->pagina_altezza));
+                        $this->asse_aletta_dx = new Linea(new Punto($this->segni_taglio + $this->abbondanza + 2 * $this->pagina_larghezza + $this->alette_larghezza + $this->alette_larghezza / 2  + $this->dorso_larghezza, $this->segni_taglio), new Punto($this->segni_taglio + $this->abbondanza + 2 * $this->pagina_larghezza + $this->alette_larghezza + $this->alette_larghezza / 2  + $this->dorso_larghezza, $this->segni_taglio + 2 * $this->abbondanza + $this->pagina_altezza));
                 }
         }
 
@@ -279,14 +286,18 @@ class Copertina
                 // FINE LAYER BORDO SICUREZZA
                 $pdf->endLayer();
 
+                // INIZIO LAYER ASSI
+                $pdf->startLayer('Assi', false, true);
+                $stile_asse = array('width' => 0.1, 'cap' => 'butt', 'join' => 'miter', 'dash' => '6,3,1,3', 'color' => array(0, 255, 0));
 
+                $this->asse_aletta_sx->Draw($pdf, $stile_asse);
+                $this->asse_retro->Draw($pdf, $stile_asse);
+                $this->asse_dorso->Draw($pdf, $stile_asse);
+                $this->asse_fronte->Draw($pdf, $stile_asse);
+                $this->asse_aletta_dx->Draw($pdf, $stile_asse);
 
-
-
-
-
-
-
+                // FINE LAYER ASSI
+                $pdf->endLayer();
 
                 //Close and output PDF document
                 $saveFile = false;
@@ -371,7 +382,7 @@ class Copertina
 
                 // INIZIO LAYER ASSI
                 $pdf->startLayer('Assi', false, true);
-                $stile_asse = array('width' => 0.1, 'cap' => 'butt', 'join' => 'miter', 'dash' => '6,3,1,3', 'color' => array(255, 0, 0));
+                $stile_asse = array('width' => 0.1, 'cap' => 'butt', 'join' => 'miter', 'dash' => '6,3,1,3', 'color' => array(0, 255, 0));
 
                 $this->asse_retro->Draw($pdf, $stile_asse);
                 $this->asse_dorso->Draw($pdf, $stile_asse);

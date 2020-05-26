@@ -42,9 +42,9 @@ class Cover
 
         $cover = new \App\Copertina($larghezza, $altezza, $abbondanza, $segnitaglio, $alette, $bordo, $rilegatura, $numeropagine, $grammatura);
         $cover->setTitolo($titolo)
-        ->setAutore($autore)
-        ->setPrezzo($prezzo)
-        ->setISBN($isbn);
+            ->setAutore($autore)
+            ->setPrezzo($prezzo)
+            ->setISBN($isbn);
         
         $cover->Draw();
     }
