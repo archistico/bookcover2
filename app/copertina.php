@@ -299,6 +299,7 @@ class Copertina
                 $pdf->endLayer();
 
                 //Close and output PDF document
+                $pdf->setFontSubsetting(false);
                 $saveFile = false;
                 if ($saveFile) {
                         $pdf->Output(__DIR__ . '/cover.pdf', 'F');
@@ -422,13 +423,13 @@ class Copertina
                                                 }
                                         }
                                         
-                                        $pdf->SetFont('Helvetica', '', 8);
+                                        //$pdf->SetFont('Helvetica', '', 8);
                                         $deltaX = -3;
                                         $deltaY = -1.5;
                                         $pdf->Text($posX+$deltaX, $posY+$Hmodulo+$deltaY, $this->ISBN[0]);
                                         for($c=1;$c<=6;$c++) { $pdf->Text($posX+1.75+($c-1)*2.40, $posY+$Hmodulo+$deltaY, $this->ISBN[$c]); }
                                         for($c=1;$c<=6;$c++) { $pdf->Text($posX+17.75+($c-1)*2.40, $posY+$Hmodulo+$deltaY, $this->ISBN[$c+6]); }
-                                        $pdf->SetFont('Helvetica', '', 8.25);
+                                        //$pdf->SetFont('Helvetica', '', 8.25);
                                         $pdf->Text($posX-1, $posY-3.5, "ISBN:  ".substr($this->ISBN,0,3)."-".substr($this->ISBN,3,2)."-".substr($this->ISBN,5,7)."-".substr($this->ISBN,12,1));
                                 }
                 
@@ -438,18 +439,18 @@ class Copertina
                 // INIZIO LAYER TESTI
                 $pdf->startLayer('Testi', true, true, false);
 
-                $pdf->SetFont('Helvetica', '', 18);
+                //$pdf->SetFont('Helvetica', '', 18);
                 $altezza_linea = 10;
 
                 $pdf->setXY($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza + $this->bordi_sicurezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza + $this->pagina_altezza / 3);
                 $pdf->Cell($this->pagina_larghezza-2*$this->bordi_sicurezza, $altezza_linea, $this->titolo, 0, 1, 'C');
-                $pdf->SetFont('Helvetica', '', 18);
+                //$pdf->SetFont('Helvetica', '', 18);
                 $lunghezza_testo = $pdf->GetStringWidth($this->titolo);
                 $pdf->Cell($this->pagina_larghezza-2*$this->bordi_sicurezza, $altezza_linea, $lunghezza_testo, 0, 1, 'C');
                 
                 $pdf->setXY($this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->dorso_larghezza, $this->segni_taglio + $this->abbondanza + $this->bordi_sicurezza + $this->pagina_altezza / 3);
                 $pdf->Rotate(-90);
-                $pdf->SetFont('Helvetica', '', $this->dorso_larghezza/0.6);
+                //$pdf->SetFont('Helvetica', '', $this->dorso_larghezza/0.6);
                 $pdf->Cell($this->pagina_altezza / 3, $this->dorso_larghezza, $this->titolo, 0, 0);
                 $pdf->StopTransform();
 
@@ -457,6 +458,7 @@ class Copertina
                 $pdf->endLayer();         
 
                 //Close and output PDF document
+                $pdf->setFontSubsetting(false);
                 $saveFile = false;
                 if ($saveFile) {
                         $pdf->Output(__DIR__ . '/cover.pdf', 'F');
