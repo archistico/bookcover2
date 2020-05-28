@@ -314,11 +314,11 @@ class Copertina
                 $pdf = new \TCPDF('L', PDF_UNIT, $pageLayout, true, 'UTF-8', false);
 
                 // set document information
-                // $pdf->SetCreator('BookCover - Archistico.com');
-                // $pdf->SetAuthor('Emilie Rollandin - Archistico.com');
-                // $pdf->SetTitle('Cover');
-                // $pdf->SetSubject('PDF bookcover');
-                // $pdf->SetKeywords('PDF, book, cover');
+                $pdf->SetCreator(PDF_CREATOR);
+                $pdf->SetAuthor('Emilie Rollandin - Archistico.com');
+                $pdf->SetTitle('Cover');
+                $pdf->SetSubject('PDF bookcover');
+                $pdf->SetKeywords('PDF, book, cover');
 
                 $pdf->setPageUnit('mm');
 
@@ -458,7 +458,6 @@ class Copertina
                 $pdf->endLayer();         
 
                 //Close and output PDF document
-                $pdf->setFontSubsetting(false);
                 $saveFile = false;
                 if ($saveFile) {
                         $pdf->Output(__DIR__ . '/cover.pdf', 'F');
