@@ -51,7 +51,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="numeropagine">Numero di pagine [-]</label>
-                        <input type="number" min="0" class="form-control" id="numeropagine" placeholder="Indica il numero di pagine" value="160" name="numeropagine" required>
+                        <input type="number" min="0" class="form-control" id="numeropagine" placeholder="Indica il numero di pagine" value="160" name="numeropagine" autofocus required>
                     </div> 
                 </div>
                 <div class="col">
@@ -75,35 +75,8 @@
                 </div>
             </div>
 
-            <h5>Parametri opzionali</h5>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="casaeditrice">Casa editrice</label>
-                        <input type="text" class="form-control" placeholder="Nome della casa editrice" name="casaeditrice" id="casaeditrice">
-                    </div> 
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="collana">Collana</label>
-                        <input type="text" class="form-control" placeholder="Nome della collana" name="collana" id="collana">
-                    </div> 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="titolo">Titolo</label>
-                        <input type="text" class="form-control" placeholder="Titolo" name="titolo" id="titolo" value="Titolo">
-                    </div> 
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="autore">Autore</label>
-                        <input type="text" class="form-control" placeholder="Autore" name="autore" id="autore" value="Autore">
-                    </div> 
-                </div>
-            </div>
+            <h5>Parametri testuali</h5>
+
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -113,8 +86,8 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="prezzo">Prezzo</label>
-                        <input type="number" min="0" max="1000" step="0.01" class="form-control" placeholder="Prezzo" name="prezzo" id="prezzo" value="10">
+                        <label for="titolo">Titolo</label>
+                        <input type="text" class="form-control" placeholder="Titolo" name="titolo" id="titolo" value="Titolo">
                     </div> 
                 </div>
             </div>

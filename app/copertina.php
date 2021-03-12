@@ -20,9 +20,7 @@ class Copertina
 
         // Info aggiuntive
         private string $titolo;
-        private string $autore;
         private string $ISBN;
-        private float $prezzo;
 
         // Valori calcolati
         private $dorso_larghezza;
