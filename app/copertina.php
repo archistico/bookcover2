@@ -162,7 +162,7 @@ class Copertina
                         $this->asse_bandella_1 = new Linea(
                                 new Punto(
                                         $this->segni_taglio, 
-                                        $this->segni_taglio + $this->pagina_altezza - ASSE_BANDELLA_Y), 
+                                        $this->segni_taglio + $this->abbondanza + $this->pagina_altezza - ASSE_BANDELLA_Y), 
                                 new Punto(
                                         $this->segni_taglio + 2 * $this->abbondanza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, 
                                         $this->segni_taglio + $this->abbondanza + $this->pagina_altezza - ASSE_BANDELLA_Y));
@@ -170,7 +170,7 @@ class Copertina
                         $this->asse_bandella_2 = new Linea(
                                 new Punto(
                                         $this->segni_taglio, 
-                                        $this->segni_taglio + $this->pagina_altezza - ASSE_BANDELLA_Y - ASSE_BANDELLA_SPESSORE), 
+                                        $this->segni_taglio + $this->abbondanza + $this->pagina_altezza - ASSE_BANDELLA_Y - ASSE_BANDELLA_SPESSORE), 
                                 new Punto(
                                         $this->segni_taglio + 2 * $this->abbondanza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, 
                                         $this->segni_taglio + $this->abbondanza + $this->pagina_altezza - ASSE_BANDELLA_Y - ASSE_BANDELLA_SPESSORE));
