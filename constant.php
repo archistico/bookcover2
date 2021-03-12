@@ -19,3 +19,11 @@ if (!defined('COPERTINA_RILEGATURA_FRESATA')) {
 if (!defined('COPERTINA_RILEGATURA_CUCITA')) {
 	define ('COPERTINA_RILEGATURA_CUCITA', true);
 }
+
+if (!defined('LOGO_COVER_LARGHEZZA')) {
+	define ('LOGO_COVER_LARGHEZZA', 76);
+}
+
+if (!defined('LOGO_COVER_ALTEZZA')) {
+	define ('LOGO_COVER_ALTEZZA', 14);
+}
