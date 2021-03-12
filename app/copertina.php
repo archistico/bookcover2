@@ -55,6 +55,9 @@ class Copertina
         private $asse_logo_cover_1;
         private $asse_logo_cover_2;
 
+        private $asse_bandella_1;
+        private $asse_bandella_2;
+        
         public function __construct(float $pagina_larghezza, float $pagina_altezza, float $abbondanza, float $segni_taglio, float $alette_larghezza, float $bordi_sicurezza, bool $rilegatura, int $pagine_numero, int $grammatura)
         {
                 $this->pagina_larghezza = $pagina_larghezza;
@@ -155,6 +158,23 @@ class Copertina
                                 new Punto(
                                         $this->segni_taglio + $this->abbondanza + $this->pagina_larghezza + $this->pagina_larghezza / 2 + $this->dorso_larghezza + $this->alette_larghezza - LOGO_COVER_LARGHEZZA/2, 
                                         $this->segni_taglio + 2 * $this->abbondanza + $this->pagina_altezza));
+                        
+                        $this->asse_bandella_1 = new Linea(
+                                new Punto(
+                                        $this->segni_taglio, 
+                                        $this->segni_taglio + $this->pagina_altezza - ASSE_BANDELLA_Y), 
+                                new Punto(
+                                        $this->segni_taglio + 2 * $this->abbondanza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, 
+                                        $this->segni_taglio + $this->abbondanza + $this->pagina_altezza - ASSE_BANDELLA_Y));
+
+                        $this->asse_bandella_2 = new Linea(
+                                new Punto(
+                                        $this->segni_taglio, 
+                                        $this->segni_taglio + $this->pagina_altezza - ASSE_BANDELLA_Y - ASSE_BANDELLA_SPESSORE), 
+                                new Punto(
+                                        $this->segni_taglio + 2 * $this->abbondanza + 2 * $this->pagina_larghezza + $this->dorso_larghezza, 
+                                        $this->segni_taglio + $this->abbondanza + $this->pagina_altezza - ASSE_BANDELLA_Y - ASSE_BANDELLA_SPESSORE));
+
                         // Riquadri elementi grafici
                         // $this->riquadro_cover = new Riquadro();
 
@@ -326,6 +346,9 @@ class Copertina
                 // NUOVI ASSI
                 $this->asse_logo_cover_1->Draw($pdf, $stile_asse);
                 $this->asse_logo_cover_2->Draw($pdf, $stile_asse);
+                
+                $this->asse_bandella_1->Draw($pdf, $stile_asse);
+                $this->asse_bandella_2->Draw($pdf, $stile_asse);
 
                 // FINE LAYER ASSI
                 $pdf->endLayer();
@@ -419,10 +442,14 @@ class Copertina
                 $this->asse_retro->Draw($pdf, $stile_asse);
                 $this->asse_dorso->Draw($pdf, $stile_asse);
                 $this->asse_fronte->Draw($pdf, $stile_asse);
-                
+
+                // NUOVI ASSI
                 $this->asse_logo_cover_1->Draw($pdf, $stile_asse);
                 $this->asse_logo_cover_2->Draw($pdf, $stile_asse);
-
+                
+                $this->asse_bandella_1->Draw($pdf, $stile_asse);
+                $this->asse_bandella_2->Draw($pdf, $stile_asse);
+                
                 // FINE LAYER ASSI
                 $pdf->endLayer();
 

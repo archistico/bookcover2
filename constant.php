@@ -27,3 +27,11 @@ if (!defined('LOGO_COVER_LARGHEZZA')) {
 if (!defined('LOGO_COVER_ALTEZZA')) {
 	define ('LOGO_COVER_ALTEZZA', 14);
 }
+
+if (!defined('ASSE_BANDELLA_Y')) {
+	define ('ASSE_BANDELLA_Y', 34);
+}
+
+if (!defined('ASSE_BANDELLA_SPESSORE')) {
+	define ('ASSE_BANDELLA_SPESSORE', 4.3);
+}
